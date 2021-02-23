@@ -14,7 +14,7 @@
 
 // ELEMENT is  a  data  type  that  contains  a  field  namedkey,  
 // which  is  of  typeint.   Note  thatELEMENTshould not be of typeint
-class tElement
+class Element
 {
     int key; 
 };
@@ -22,9 +22,9 @@ class tElement
 class ELEMENT *ElementT;
 
 
-// HEAPis a data type that contains three fields namedcapacity(of typeint),
+// HEAP is a data type that contains three fields namedcapacity(of typeint),
 // size(of typeint),andH(an array of type 
-// ELEMENTwith index ranging from 0 to capacity)
+// ELEMENT with index ranging from 0 to capacity)
 class HEAP
 {
     int capacity;
@@ -32,7 +32,7 @@ class HEAP
     ELEMENT *elements;
 };
 
-HEAP heapInit(int capacity);
+void HEAP heapInit(int capacity);
 void heapPrint(HEAP *H);
 
 /**
