@@ -3,4 +3,6 @@
 #include <stdlib.h>
  
 int nextCommand(int *n,int *f);
+
+
 #endif

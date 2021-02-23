@@ -16,7 +16,7 @@ using namespace std;
 
 //=============================================================================
 /** 
- * gets the next input of the ccommand lines and returns it to the main
+ * gets the next input of the command lines and returns it to the main
 */
 
 int nextCommand(int *n, int *f)
@@ -45,7 +45,7 @@ int nextCommand(int *n, int *f)
             break;
         }
         //R input, read input from HEAPinput.txt
-        if (c == 'S' || c == 's')
+        if (c == 'R' || c == 'r')
         {
             break;
         }

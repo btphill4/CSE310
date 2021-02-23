@@ -22,12 +22,11 @@ class Element
 class ELEMENT *ElementT;
 
 
-// HEAP is a data type that contains three fields namedcapacity(of typeint),
-// size(of typeint),andH(an array of type 
+// HEAP is a data type that contains three fields named capacity(of typeint),
+// size(of typeint),and H(an array of type 
 // ELEMENT with index ranging from 0 to capacity)
 class HEAP
 {
-    public:
     int capacity;
     int size;
     ELEMENT *H;
@@ -37,6 +36,7 @@ class HEAP
     void heapPrint(HEAP *H);
     void percUp(HEAP *H, int pos);
     void percDown(HEAP *H, int pos);
+    //int size();
 };
 
 

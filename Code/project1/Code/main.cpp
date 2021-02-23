@@ -10,6 +10,7 @@
     // variables for the parser...
     char c;
     int i, v;
+    int n, f;
     while(1){
         c = nextCommand(&n, &f);
         switch (c) {
