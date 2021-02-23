@@ -13,7 +13,7 @@
 
 
 // ELEMENT is  a  data  type  that  contains  a  field  namedkey,  
-// which  is  of  typeint.   Note  thatELEMENTshould not be of typeint
+// which  is  of  typeint.   Note  that ELEMENT should not be of typeint
 class Element
 {
     int key; 
@@ -27,13 +27,19 @@ class ELEMENT *ElementT;
 // ELEMENT with index ranging from 0 to capacity)
 class HEAP
 {
+    public:
     int capacity;
     int size;
-    ELEMENT *elements;
+    ELEMENT *H;
+
+    
+    void heapInit(int capacity);
+    void heapPrint(HEAP *H);
+    void percUp(HEAP *H, int pos);
+    void percDown(HEAP *H, int pos);
 };
 
-void HEAP heapInit(int capacity);
-void heapPrint(HEAP *H);
+
 
 /**
  * void percUp(HEAP *H, int pos);

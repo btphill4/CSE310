@@ -3,9 +3,13 @@
 #include <iostream>
 using namespace std;
 
-void heapInit(int capcity)
+
+HEAP heapInit(int capcity)
 {
 
 } 
 
-void
+HEAP heapPrint(HEAP *H)
+{
+
+}
