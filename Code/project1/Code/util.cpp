@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "util.h"
+#include "heap.h"
+#include "heap.cpp"
 using namespace std;
 
 /** 
@@ -29,31 +31,51 @@ int nextCommand(int *n, int *f)
         {
             continue;
         }
+
+        //S input, Stops the program
         if (c == 'S' || c == 's')
         {
+            cout << "COMMAND: " << c << endl;
+            return 0;       //stop command for while loop
             break;
         }
+        
         //C input, creates heap of size n
         if (c == 'C' || c == 'c')
         {
             scanf("%d", n);
+            //HEAP::initalize(&n);
+
+            cout << "COMMAND: " << c << " " << n <<endl;
+
             break;
         }
+
         //P input, prints the heap
         if (c == 'P' || c == 'p')
         {
+            //HEAP::heapPrint()
+            cout << "COMMAND: " << c << endl;
+
             break;
         }
+
         //R input, read input from HEAPinput.txt
         if (c == 'R' || c == 'r')
         {
+            cout << "COMMAND: " << c << endl;
+
             break;
         }
+
         //W input, writes to output files HEAPoutput.txt
         if (c == 'W' || c == 'w')
         {
+            cout << "COMMAND: " << c << endl;
+
             break;
         }
+
         /*if (...){
         ...
         }*/

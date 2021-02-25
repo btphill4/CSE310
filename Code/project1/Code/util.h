@@ -2,6 +2,7 @@
 #define util_h
 #include <stdlib.h>
  
+
 int nextCommand(int *n,int *f);
 
 
