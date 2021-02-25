@@ -54,6 +54,7 @@ int nextCommand(int *n, int *f)
         //P input, prints the heap
         if (c == 'P' || c == 'p')
         {
+            
             //HEAP::heapPrint()
             cout << "COMMAND: " << c << endl;
 

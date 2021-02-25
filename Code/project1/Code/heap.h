@@ -1,17 +1,6 @@
 #ifndef heap_h
 #define heap_h
 
-/** 
-    Example (C++ style):
-	class contact { 
-	  char name[30];
-	  int phone;
-	};
-	p = new contact;
-*/
-
-
-
 // ELEMENT is  a  data  type  that  contains  a  field  namedkey,  
 // which  is  of  typeint.   Note  that ELEMENT should not be of typeint
 typedef struct TAG_ELEMENT
@@ -19,8 +8,8 @@ typedef struct TAG_ELEMENT
     int key;
 }ELEMENT;
 
-
-typedef ELEMENT *ElementT;  //points to an ELEMENT struct called ElementT
+//Array of pointers type, type ELEMENT Pointer
+typedef ELEMENT *ElementT;  
 
 // HEAP is a data type that contains three fields named capacity(of typeint),
 // size(of typeint),and H(an array of type 
@@ -29,20 +18,21 @@ typedef struct TAG_HEAP
 {
     
     int capacity; /* max size of the heap */
-    int size; /* current size of the heap */
-    ElementT *H; /* pointer to pointers to elements (**Element)*/
-    int n;
-
+    int size = 12; /* current size of the heap */
+    ElementT *H; /* points to array of n + 1 pointers(of type *Element) pointer to pointers to elements (**Element)*/
+    
+  
     //methods//
-    ELEMENT* initalize(int n);  
-    void heapPrint(HEAP *H);
-    //void percUp(HEAP *H, int pos);
-    //void percDown(HEAP *H, int pos);
-    //int getSize();
-
+    HEAP* initalize(int n);  
+    //void heapPrint(heap* );
+    void heapPrint(HEAP*);
+    HEAP* getPointer(heapPtr);
+    
 }HEAP;
 
-    
+
+#endif
+
 /** 
  typedef struct {
   int n;
@@ -51,7 +41,7 @@ typedef struct TAG_HEAP
 } my_struct_t; 
 
   my_struct_t myStruct = {10, true, "Hello!"}; 
-  my_struct_t * ptr;*/
+  my_struct_t * ptr; */
 
 
 /**
@@ -70,7 +60,7 @@ typedef struct TAG_HEAP
  * until the heap order is satisfied
  */
 
-#endif
+
 
 
 
