@@ -24,13 +24,13 @@ typedef struct TAG_HEAP
   
     //methods//
     HEAP* initalize(int n);  
-    //void heapPrint(heap* );
-    void heapPrint(HEAP*);
-    HEAP* getPointer(heapPtr);
+    void heapPrint(HEAP* a);
+    //HEAP* getPointer(heapPtr); 
+
     
 }HEAP;
 
-
+//typedef HEAP *heapPtr;
 #endif
 
 /** 

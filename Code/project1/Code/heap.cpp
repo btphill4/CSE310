@@ -1,11 +1,11 @@
 #include "heap.h"
 #include <stdlib.h>
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
 //Variables accessible outside of methods
-HEAP tempH;
-HEAP *heapPointer;
+
 
 //Pointer notes
 // my_struct_t myStruct = {10, true, "Hello!"}; 
@@ -13,9 +13,10 @@ HEAP *heapPointer;
 // ptr = &myStruct;
 
 
+HEAP tempH;
+HEAP* heapPointer;
 
-
- /*Creates object of type heap
+/*Creates object of type heap
     int Capacity = int n, int size = 12?, **Element H
     H is pointing to an array of n + 1 pointers 
     Returns a pointer to H (HEAP* heapPointer) */
@@ -41,17 +42,17 @@ HEAP*::intialize(int n)
 } 
 
 //method to return the pointer to use for other methods
-HEAP*::getPointer(heapPointer)
+/*HEAP*::getPointer(heapPointer)
 {
     return heapPointer;
-}
+}*/
 
 /** 
  * prints out the heap information including capacity, 
  * size, and the key fields of the element 
  * in the array with index from  to size
 */
-void heapPrint(heapPointer)
+void HEAP::heapPrint(heapPointer)
 {
 
     //print the capity and size
@@ -61,9 +62,11 @@ void heapPrint(heapPointer)
     //print the HEAP from size 1
     for(int i = 0; i <= size; i++)
     {
-        
+        break;
     }
 }
+
+
 
 
 
