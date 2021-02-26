@@ -53,7 +53,7 @@ int main()
             case 'w':
             case 'W':  
                 printf("COMMAND: %c\n", c);
-                
+                //use ofstream
 
             default: break;
         }

@@ -16,7 +16,11 @@ typedef class HEAP
     int size;
     ElementT *H; 
 
-    HEAP();
+    HEAP()
+    {
+        /*capacity = 0;
+        size = 12; */
+    }
     HEAP(int n)
     {
         capacity = n;
@@ -26,6 +30,7 @@ typedef class HEAP
     //methods for project 1
     HEAP* intialize(int n);
     void heapPrint(HEAP* a);
+    void buildHeap();
 
     //getter methods
     int getCapacity()
@@ -36,9 +41,9 @@ typedef class HEAP
     {
         return this->size;
     }
-    ElementT getH()
+    ElementT* getH()
     {
-        //return this-> H;
+        return this-> H;
     } 
     
 
