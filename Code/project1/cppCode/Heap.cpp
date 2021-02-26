@@ -7,7 +7,7 @@ using namespace std;
 //HEAP tempH = new HEAP();
 HEAP *heapPointer;
 
-
+/*
 HEAP*	HEAP::intialize(int n)
 {
     //create an array that hold pointers of type ElementT
@@ -27,6 +27,12 @@ HEAP*	HEAP::intialize(int n)
     heapPointer = &tempH;
 
     return heapPointer;
+}*/
+
+HEAP*	HEAP::intialize(int n)
+{
+    HEAP* heap = new HEAP(n);
+    return heap;
 }
 
 void	HEAP::heapPrint(HEAP* a)
@@ -50,7 +56,7 @@ int main()
     HEAP mainH;
     HEAP* mainPtr;
 
-    mainPtr = mainH.intialize(3);
+    mainH.intialize(3);
     mainH.setCapacity(3);
 
     mainPtr = &mainH;
