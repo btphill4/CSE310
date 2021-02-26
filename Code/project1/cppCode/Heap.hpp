@@ -16,15 +16,20 @@ typedef class HEAP
     int size;
     ElementT *H; 
 
-    HEAP()
+   /* HEAP()
     {
-        /*capacity = 0;
-        size = 12; */
-    }
+        capacity = 0;
+        size = 12; 
+
+        H = ElementT ElementA[capacity+1];
+
+    } */
     HEAP(int n)
     {
         capacity = n;
         size = 12;
+
+        ElementT arr = new ELEMENT[n+1];
     }
 
     //methods for project 1
