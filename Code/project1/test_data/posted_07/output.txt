@@ -1,3 +1,0 @@
-COMMAND: R
-Error: heap overflow
-COMMAND: S

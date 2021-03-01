@@ -1,4 +1,0 @@
-COMMAND: C 10
-COMMAND: R
-Error: heap overflow
-COMMAND: S

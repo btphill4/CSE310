@@ -1,4 +1,0 @@
-COMMAND: C 20
-COMMAND: R
-Error: cannot open file for reading
-COMMAND: S

@@ -1,0 +1,9 @@
+I used dynamically allocated memory when created objects and pointers.
+It was used when I used the new() function because it will create a 
+dynamically allocated memory for the objects. 
+Heap.cpp:
+line 21: ELEMENT* arr = new ELEMENT[n + 1];  //dynamically allocated
+line 29: HEAP* heap = new HEAP(n);           //dynamically allocated
+
+Main.cpp:
+line 88: ELEMENT *keyPtr = new ELEMENT();  //dynamically allocated
