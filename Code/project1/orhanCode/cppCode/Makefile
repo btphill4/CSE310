@@ -12,9 +12,9 @@ Main.o : Main.cpp
 # main.o is created by the command g++ -c -Wall main.cpp
 # note that the TAB before $(CC) is REQUIRED...
 		$(CC) $(CFLAGS) Main.cpp
-Util.o :Util.hpp Util.cpp
+Util.o :Util.h Util.cpp
 		$(CC) $(CFLAGS) Util.cpp
-Heap.o :Heap.hpp Heap.cpp
+Heap.o :Heap.h Heap.cpp
 		$(CC) $(CFLAGS) Heap.cpp
 
 clean :

@@ -4,7 +4,30 @@
 #include <stdio.h>
 using namespace std;
 
+/* FROM OLD HEAP stuff
+//HEAP *heapPointer;
 
+HEAP* HEAP::initialize(int n)
+{
+    //create an array that hold pointers of type ElementT
+    //n + 1 because we dont want ElementA[0]
+	ELEMENT ElementA[n+1];
+
+    //create HEAP object tempH, pass n to capacity and size = 12
+    HEAP *tempH;
+    tempH = new HEAP;
+    //tempH.capacity = n;
+    tempH->setCapacity(n);
+    
+    tempH->setSize(12);
+
+    //set tempH's *H value to ElementA
+    tempH->setH(ElementA);
+
+   
+    return tempH;
+}
+*/
 /*HEAP::HEAP()
 {
     capacity = 0;
