@@ -43,6 +43,7 @@ int nextCommand(int *n, int *f)
         if (c == 'C' || c == 'c')
         {
             scanf("%d", n);
+            
             //HEAP::initalize(&n);
 
             //cout << "COMMAND: " << c << " " << n <<endl;

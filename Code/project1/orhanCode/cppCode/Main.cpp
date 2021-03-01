@@ -9,18 +9,20 @@
 #include <fstream>
 #include <string>
 
+using namespace std;
 int main()
 {
     std::ifstream ifile("input.txt");
     std::ifstream jfile("HEAPinput.txt");
     std::ifstream input("HEAPinput.txt");
+    bool initalized = false;
     // variables for the parser....
     std::string temp2;
-    char *temp;
+    //char *temp;
     HEAP* cheap;
     char c;
     int w;
-    int i, v;
+    //int i, v;
     int n, f;
     while(1)
     {
@@ -38,6 +40,7 @@ int main()
             case 'C': 
                 printf("COMMAND: %c %d\n", c, n);
                 cheap = cheap->initialize(n);
+                initalized = true;
                 break;
             
             //read command
@@ -45,19 +48,25 @@ int main()
             case 'R': 
                 printf("COMMAND: %c\n", c);
                 
+                if(!initalized)
+                {
+                    cout << "Error: heap overflow\n";
+                    break;
+                }
+
+                input >> n;
                 if (!input)
                 {
-                   printf("Error: cannot open file for reading");
+                   printf("Error: cannot open file for reading\n");
                    break;
                 }
-                input >> n;
-                if(cheap == NULL || cheap->size < n)
+                if(cheap == NULL || cheap->capacity < n)
                 {
                       std::cout << "Error: heap overflow\n";
                       break;
                 }
-                cheap->setSize(n);
-                for(int i = 1; i<=n; i++)
+                //cheap->setSize(n);
+                for(int i = 1; i<= cheap->getSize(); i++)
                 {
                     input >> w;
                     ELEMENT *nElement = new ELEMENT();
@@ -74,9 +83,15 @@ int main()
             case 'p':
             case 'P':
                 printf("COMMAND: %c\n", c);
+                if(!initalized)
+                {
+                    printf("Error: heap is NULL\n");
+                    break;
+                }
+
                 if(cheap->size == 0)
                 {
-                    printf("Error: heap is NULL");
+                    printf("Error: heap is NULL\n");
                     break;
                 }
                 cheap->heapPrint(cheap);
@@ -86,16 +101,31 @@ int main()
             case 'w':
             case 'W':  
                 printf("COMMAND: %c\n", c);
-                if(cheap->size == 0)
+                if(!initalized)
                 {
-                    printf("Error: heap is NULL");
+                     printf("Error: cannot open file for writing\n");
+
                     break;
                 }
-                if(!jfile)
+
+                //jfile >> temp2;
+                if(jfile.fail())
                 {
-                     printf("Error: cannot open file for writing");
+                     printf("Error: cannot open file for writing\n");
                      break;
                 }
+
+                if(cheap->size == 0)
+                {
+                    printf("Error: heap is NULL\n");
+                    break;
+                }
+                else
+                {
+                    printf("Error: cannot open file for writing\n");
+                    break;
+                }
+                
 
             default: break;
         }
