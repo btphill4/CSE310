@@ -13,24 +13,24 @@ class HEAP
 {
     public: 
     int capacity;
-    int size;
-    ElementT *H; //
+    int size = 12;
+    ElementT H; 
 
    HEAP()
     {
-        /*capacity = 0;
-        size = 12; */
+        
     }
-    HEAP(int n)
-    {
+    HEAP(int n);
+    /*{
         capacity = n;
         size = 12;
-    }
+    }*/
 
     //methods for project 1
     HEAP* initialize(int n);
-    HEAP* heapPrint(HEAP* heapPointer);
+    void heapPrint(HEAP* a);
     void buildHeap();
+
 
     //getter methods
     int getCapacity()
@@ -39,29 +39,30 @@ class HEAP
     }
     int getSize()
     {
-        return this->size;
+        return 12;
+        //return this->size;
     }
-    ElementT* getH()
+    ElementT getH()
     {
-        return this-> H;
+        return this->H;
     } 
     
-
     //setters
-    void setH(ElementT *H)
+    void setH(ElementT sH)
     {
-        this -> H = H;
+        H = sH;
     }
 
-    void setCapacity(int capacity)
+    void setCapacity(int c)
     {
-        this -> capacity = capacity;
+        capacity = c;
     }
 
-    void setSize(int size)
+    void setSize(int s)
     {
-        this -> size = size;
+        size = s;
     }
+
 
 
 };

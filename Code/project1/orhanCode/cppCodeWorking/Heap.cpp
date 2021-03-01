@@ -4,8 +4,40 @@
 #include <stdio.h>
 using namespace std;
 
-/*
+
 //HEAP *heapPointer;
+
+
+//getter methods
+    int HEAP::getCapacity()
+    {
+	    return this->capacity;
+    }
+    int HEAP::getSize()
+    {
+        return this->size;
+    }
+    ElementT HEAP::getH()
+    {
+        return this->H;
+    } 
+    
+
+    //setters
+    void HEAP::setH(ElementT _H)
+    {
+        H = _H;
+    }
+
+    void HEAP::setCapacity(int _capacity)
+    {
+        capacity = _capacity;
+    }
+
+    void HEAP::setSize(int _size)
+    {
+        size = _size;
+    }
 
 HEAP* HEAP::initialize(int n)
 {
@@ -19,7 +51,7 @@ HEAP* HEAP::initialize(int n)
     //tempH.capacity = n;
     tempH->setCapacity(n);
     
-    tempH->setSize(12);
+    tempH->size = 12;
 
     //set tempH's *H value to ElementA
     tempH->setH(ElementA);
@@ -27,34 +59,13 @@ HEAP* HEAP::initialize(int n)
    
     return tempH;
 }
-*/
-HEAP::HEAP(int n)
-{
-	capacity = n;
-    size = 12;
-
-    ELEMENT* arr = new ELEMENT[n + 1];  //dynamically allocated
-
-    H = arr;
-}
-
-HEAP*	HEAP::initialize(int n)
-{
-	HEAP* heap = new HEAP(n);
-
-    cout << "INSIDE init: capcity=" << heap->getCapacity() << ", size=" 
-    << heap->getSize() << endl;
-
-    return heap;
-}
-
 
 
 void HEAP::heapPrint(HEAP* a)
 {
 	//print the capity and size
     cout << "capacity = " << a->capacity << ", size = " 
-    << a->getSize() << endl;
+    << a->size << endl;
 
     //print the HEAP from size 1
     ElementT arr = a->getH();
@@ -63,8 +74,6 @@ void HEAP::heapPrint(HEAP* a)
         cout << arr[i].key << endl;
     }
 }
-
-
 
 
 //testing main
