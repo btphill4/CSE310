@@ -82,6 +82,11 @@ int nextCommand(int *n, int *f)
         //K input, decrease key
         if (c == 'K' || c == 'k')
         {
+            //scan for index
+            scanf("%d", n);
+
+            //scan for value
+            scanf("%d", f);
             break;
         }
         

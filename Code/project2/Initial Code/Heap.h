@@ -26,8 +26,9 @@ class HEAP
     //values to be set at construction
     public: 
     int capacity;
-    int size = 12;
+    int size;
     ElementT H; 
+    int heapifyCount;
 
     //~~~constructors~~~~//
     //default
@@ -37,10 +38,6 @@ class HEAP
     }
     //for initalize(n)
     HEAP(int n);
-    /*{
-        capacity = n;
-        size = 12;
-    }*/
 
 
     //methods for project 1
@@ -55,7 +52,7 @@ class HEAP
     int getSize()
     {
         //return this->size;
-        return 12;
+        return this->size;
     }
     ElementT getH()
     {
@@ -84,7 +81,7 @@ class HEAP
     //Methods For project 2
     //required methods
     
-    void insert(HEAP* a, ElementT key);
+    void insert(HEAP* a, int key);
     void extractMin(HEAP* a);
     void decreaseKey(HEAP* a, int index, int key);
     void minHeapify(HEAP* a, int index);

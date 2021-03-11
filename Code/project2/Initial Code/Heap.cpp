@@ -16,8 +16,8 @@ using namespace std;
 HEAP::HEAP(int n)
 {
 	capacity = n;
-	//size = 0; //correct I think
-    size = 12;	//wrong I think
+	size = 0; //correct I think
+    //size = 12;	//wrong I think
 
     //element pointer array
     ELEMENT* arr = new ELEMENT[n + 1];  //dynamically allocated
@@ -42,7 +42,7 @@ void HEAP::heapPrint(HEAP* a)
 {
 	//print the capity and size
     cout << "capacity=" << a->capacity << ", size=" 
-    << a->getSize() << endl;
+    << a->size << endl;
 
     //print the HEAP from size 1
     ElementT arr = a->getH();
@@ -78,6 +78,12 @@ void swap(int *x, int *y)
 	*x = *y; 
 	*y = temp; 
 } 
+void eSwap(ElementT *x, ElementT *y) 
+{ 
+	ElementT temp = *x; 
+	*x = *y; 
+	*y = temp; 
+} 
 
 //return the parent node value 
 int HEAP::getParent(int i)
@@ -104,6 +110,7 @@ int HEAP::buildMinHeap(HEAP*  a)
 	{
 		//minHeapify(a, i);
 		counter++;
+		a->heapifyCount++;
 	} 
 	
 }
@@ -111,7 +118,7 @@ int HEAP::buildMinHeap(HEAP*  a)
 void minHeapify(HEAP * a, int i)
 {
 	int * l;
-	//l = a->H[i]->getLeft(i);
+	//l = a->H[i];
 	int left;
 	//left = a->H[i];
 	l = &left;
@@ -161,37 +168,46 @@ ELEMENT HEAP::getHeapMin(HEAP * a)
 
 //inserts an object of type ELEMENT pointed to by 
 //element into the heap pointed to by heap
-void HEAP::insert(HEAP* a, ElementT obj)
+void HEAP::insert(HEAP* a, int obj)
 {
 
-    /*
-    if (heap_size == capacity) 
+    //This will be in main
+    if (a->size== capacity) 
 	{ 
 		cout << "\nOverflow: Could not insertKey\n"; 
 		return; 
 	} 
-
+	
 	// First insert the new key at the end 
-	heap_size++; 
-	int i = heap_size - 1; 
-	harr[i] = k; 
+	a->size++; 
+	int i = a->size - 1; 
+	//a->H[i].key = obj; 
+	ELEMENT *keyPtr = new ELEMENT();
+	keyPtr->key = obj;
+	//std::cout << w << "\n";                   //Testing purposes
+	a->H[i] = *keyPtr;
 
-	// Fix the min heap property if it is violated 
-	while (i != 0 && harr[parent(i)] > harr[i]) 
+	/*// Fix the min heap property if it is violated 
+	while (i != 0 && a->H[getParent(i)]->key > a->H[i]->key) 
 	{ 
-	swap(&harr[i], &harr[parent(i)]); 
-	i = parent(i); 
-	} 
-    */
+	eSwap(a->H[i], a->H[getParent(i)]); 
+	i = getParent(i); 
+	} */
+    
 
    //added element, size++ ADD TO MAIN MAYBE
-   a->size++;
+   
 }
 
 //deletes the minimum element from the 
 //heap pointed to by heapand prints them
 int extractMin(HEAP* a)
-{
+{	
+	//print deleted key
+
+	//cout << "Deleted key: " << a->H[1]->key << endl;
+
+	//will be in main
 	if(a->getSize() < 1)
 	{
 		cout << "heap is empty\n";
@@ -228,9 +244,10 @@ int extractMin(HEAP* a)
 
 //right method but pointers are rough
 //decreases the key of heap->H[index] to value
-void decreaseKey(HEAP* a, int i, int k)
-{ /*
-	if (k > a->H[i]) //->key)
+void decreaseKey(HEAP* a, int index, int value)
+{ 	//main call: mainHeap->decreaseKey(mainHeap, n, f);
+	
+	/*if (value > a->H[index]->key)
 	{
 		cout << "key is larger than current key";
 	}
@@ -239,8 +256,8 @@ void decreaseKey(HEAP* a, int i, int k)
 	{
 		swap(a->H[i], a->H[a->getParent(i)]);
 		i = a->getParent(i);
-	}
-	*/
+	}*/
+	
 }
 
 

@@ -86,7 +86,7 @@ int main()
 
                 //write to the heap
                 //mainHeap->setSize(n);
-                for(int i = 1; i<= mainHeap->getSize(); i++)
+                for(int i = 1; i <= n; i++) //changed n from mainHeap->getSize()
                 {
                     input >> w;
                     ELEMENT *keyPtr = new ELEMENT();
@@ -100,6 +100,7 @@ int main()
 
                     //increments the heapSize with each added element
                     mainHeap->size++;
+                    //cout << endl << mainHeap->size;
                 }
                 //if f = 1, print number of Heapify Calls
                 if(f == 1)
@@ -144,7 +145,7 @@ int main()
                 //initalize check
                 if(!initalized)
                 {
-                     printf("Error: cannot open file for writing\n");
+                     printf("Error: cannot write\n");
 
                     break;
                 }
@@ -207,6 +208,7 @@ int main()
             case 'i':
             case 'I':
                 //printf("COMMAND: %c %d\n", c, n);
+                //int n = value 
 
                 if(!initalized)
                 {
@@ -220,7 +222,9 @@ int main()
                     break;
                 }
 
-                //else adds the element
+                //else Dynamically allocates memory for an ELEMENT, 
+                //sets its key field to value, and inserts it
+                //to the heap pointed to by heap
                 else
                 {
                     //wrong
@@ -248,7 +252,7 @@ int main()
                     break;
                 }
                 //if index is not within interval [1, heap->size]
-                if(n != mainHeap->size)
+                if(n >= 0 && n <= mainHeap->size)
                 {
                     printf("Error: invalid call to DecreaseKey\n");
                     break;
@@ -261,8 +265,11 @@ int main()
                 }
                 else
                 {
+                    //int n = index, int f = value
+
                     //probably wrong
-                    //mainHeap->decreaseKey(mainHeap, mainHeap->size, n );
+                    //decrese the key of mainHeap->H[index(n)] 
+                    //mainHeap->decreaseKey(mainHeap, n, f);
                     break;
                 }
                 
