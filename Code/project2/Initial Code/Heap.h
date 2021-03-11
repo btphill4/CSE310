@@ -90,7 +90,7 @@ class HEAP
     void minHeapify(HEAP* a, int index);
 
     //Not required may not need
-    void buildMinHeap(HEAP* a);
+    int buildMinHeap(HEAP* a);
     void heapSort(HEAP* a);
     ELEMENT getHeapMin(HEAP* a);
 

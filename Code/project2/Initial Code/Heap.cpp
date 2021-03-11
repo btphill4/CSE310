@@ -96,13 +96,16 @@ int HEAP::getRight(int i)
 }
 
 //builds a minHeap
-void HEAP::buildMinHeap(HEAP*  a)
+int HEAP::buildMinHeap(HEAP*  a)
 {
+	int counter = 0;
 	a->getSize() == a->getCapacity();
 	for(int i = (a->getCapacity()); i <= 1; i++)
 	{
 		//minHeapify(a, i);
+		counter++;
 	} 
+	
 }
 //builds minHeap 
 void minHeapify(HEAP * a, int i)

@@ -31,9 +31,13 @@ int main()
     //int i, v;
     int n, f;
 
+    //project 2 variables
+    
+
     //command line input loop
     while(1)
     {
+        int heapifyCounter = 0;
         c = nextCommand(&n, &f);
         switch (c) 
         {
@@ -91,10 +95,18 @@ int main()
                     mainHeap->H[i] = *keyPtr;
                     //std::cout << mainHeap->H[i].key << "\n";  //Testing purposes
                     
+                    //Call to build heap
+                    heapifyCounter = mainHeap->buildMinHeap(mainHeap);
+
                     //increments the heapSize with each added element
                     mainHeap->size++;
                 }
-                //getline(input.open, temp2);
+                //if f = 1, print number of Heapify Calls
+                if(f == 1)
+                {
+                    cout << "Number of Heapify calls: " << heapifyCounter << endl;
+                    break;
+                }
                 break;
 
             //print command
@@ -174,17 +186,19 @@ int main()
                     printf("Error: heap is NULL or empty\n");
                     break;
                 }
-                //heap is null or size is 0
+                //heap is null or size is 0 
+                //THIS BREAKS CAUSE SIZE ISSUES
                 if (mainHeap->size == 0)
                 {
                     printf("Error: heap is NULL or empty\n");
                     break;
                 }
-                //else extractMin(mainHEap)
+
+                //else does extractMin(mainHEap)
                 else
                 {
-                    //wrong
-                    //HEAP::extractMin(mainHeap);
+                    //wrong i think
+                    //mainHeap->extractMin(mainHeap);
                     break;
                 }
                 //code
@@ -205,11 +219,12 @@ int main()
                     printf("Error: heap is NULL or full\n");
                     break;
                 }
-                //else add element
+
+                //else adds the element
                 else
                 {
                     //wrong
-                    //mainHeap->insert()
+                    //mainHeap->insert(n)
                     break;
                 }
                 //code
