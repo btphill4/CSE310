@@ -31,8 +31,8 @@ HEAP*	HEAP::initialize(int n)
 	HEAP* heap = new HEAP(n);   //will be dynamically allocated in the constuctor
 
     //testing purposes
-    /*cout << "INSIDE init: capcity=" << heap->getCapacity() << ", size=" 
-    << heap->getSize() << endl;*/
+   /* cout << "INSIDE init: capcity=" << heap->getCapacity() << ", size=" 
+    << heap->getSize() << endl; */
 
     return heap;
 }
@@ -55,7 +55,7 @@ void HEAP::heapPrint(HEAP* a)
         }
 
         //if we are at the end of the arr, don't print a comma
-        if(i == a->size)
+        if(i == a->getSize())
         {
             cout << arr[i].key << endl;
         }
@@ -84,22 +84,15 @@ int HEAP::getParent(int i)
 {
 	return i/2;
 }
-//returns the left node value *BROKEN*
+//returns the left node value 
 int HEAP::getLeft(int i)
 {
 	return 2*i;
-	//i ;//= a->H[i/2]->key;
-	//return i;
-
 }
-
-//returns the right node value *BROKEN*
+//returns the right node value 
 int HEAP::getRight(int i)
 {
 	return ((2 * i) + 1);
-	//i; //= a->H[2*i]->key;
-	//int* iPtr;
-	//return iPtr;
 }
 
 //builds a minHeap
@@ -115,10 +108,11 @@ void HEAP::buildMinHeap(HEAP*  a)
 void minHeapify(HEAP * a, int i)
 {
 	int * l;
+	//l = a->H[i]->getLeft(i);
 	int left;
-	//left = a->H[i]->getLeft(i);
+	//left = a->H[i];
 	l = &left;
-	//int right = a->getRight(i);
+	int right = a->getRight(i);
 	int root;
 
 	//THE LOGIC IS HERE BUT THE GETLEFT AND RIGHT ARE WRONG//
@@ -162,7 +156,8 @@ ELEMENT HEAP::getHeapMin(HEAP * a)
 }
 
 
-//inserts element in the array 
+//inserts an object of type ELEMENT pointed to by 
+//element into the heap pointed to by heap
 void HEAP::insert(HEAP* a, ElementT obj)
 {
 
@@ -190,7 +185,8 @@ void HEAP::insert(HEAP* a, ElementT obj)
    a->size++;
 }
 
-//prints and removes the root element
+//deletes the minimum element from the 
+//heap pointed to by heapand prints them
 int extractMin(HEAP* a)
 {
 	if(a->getSize() < 1)
@@ -228,6 +224,7 @@ int extractMin(HEAP* a)
 }
 
 //right method but pointers are rough
+//decreases the key of heap->H[index] to value
 void decreaseKey(HEAP* a, int i, int k)
 { /*
 	if (k > a->H[i]) //->key)

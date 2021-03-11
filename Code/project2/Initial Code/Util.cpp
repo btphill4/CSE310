@@ -51,6 +51,7 @@ int nextCommand(int *n, int *f)
         //R input, read input from HEAPinput.txt
         if (c == 'R' || c == 'r')
         {
+            scanf("%d", f);
             break;
         }
 

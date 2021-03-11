@@ -54,8 +54,8 @@ class HEAP
     }
     int getSize()
     {
-        return 12;
         //return this->size;
+        return 12;
     }
     ElementT getH()
     {
@@ -82,21 +82,23 @@ class HEAP
 
 
     //Methods For project 2
-    void buildMinHeap(HEAP* a);
-    void heapSort(HEAP* a);
-    //writeHeap(heap)
+    //required methods
+    
     void insert(HEAP* a, ElementT key);
     void extractMin(HEAP* a);
-    void decreaseKey(HEAP* a, int i, int key);
-    void minHeapify(HEAP* a, int i);
+    void decreaseKey(HEAP* a, int index, int key);
+    void minHeapify(HEAP* a, int index);
 
-    //node getter methods
+    //Not required may not need
+    void buildMinHeap(HEAP* a);
+    void heapSort(HEAP* a);
+    ELEMENT getHeapMin(HEAP* a);
+
+    //node getter methods also may not need
     int getParent(int i);
     int getLeft(int i);
     int getRight(int i);
 
-    ELEMENT getHeapMin(HEAP* a);
-    int keyAsInt(ElementT key);
 
 };
 

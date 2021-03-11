@@ -40,13 +40,13 @@ int main()
             //S input, stops the while loop
             case 's':
             case 'S': 
-                printf("COMMAND: %c\n", c); 
+                //printf("COMMAND: %c\n", c); 
                 exit(0);
             
             //C input: Creates a heap object and sets initalized to true
             case 'c':
             case 'C': 
-                printf("COMMAND: %c %d\n", c, n);
+                //printf("COMMAND: %c %d\n", c, n);
                 mainHeap = mainHeap->initialize(n);
                 initalized = true;
                 break;
@@ -54,7 +54,7 @@ int main()
             //R input: reads from a heap from a file and adds it to the heap object
             case 'r':
             case 'R': 
-                printf("COMMAND: %c\n", c);
+                //printf("COMMAND: %c %d\n", c, f);
                 
                 //initalize check
                 if(!initalized)
@@ -100,7 +100,7 @@ int main()
             //print command
             case 'p':
             case 'P':
-                printf("COMMAND: %c\n", c);
+                //printf("COMMAND: %c\n", c);
 
                 //initalize check
                 if(!initalized)
@@ -115,12 +115,11 @@ int main()
                     break;
                 }
                 //size check
-                if(mainHeap->size == 0)
+                /*if(mainHeap->size == 0)
                 {
-                    //printf("Error: heap is NULL\n");
+                    printf("Error: heap is NULL\n");
                     break;
-                }
-
+                }*/
                 //print function
                 mainHeap->heapPrint(mainHeap);
                 break;
@@ -128,7 +127,7 @@ int main()
             //W: input, writes the array and commands to a file
             case 'w':
             case 'W':  
-                printf("COMMAND: %c\n", c);
+                //printf("COMMAND: %c\n", c);
 
                 //initalize check
                 if(!initalized)
@@ -160,14 +159,14 @@ int main()
                     break;
                 }
             //end project 1 stuff
-            
+
 //========================================================================//
 
             //PROJECT 2 STUFF
             //D, deletes the minimum element and writes it to terminal
             case 'd':
             case 'D':
-                printf("COMMAND: %c\n", c);
+                //printf("COMMAND: %c\n", c);
 
                 //initalize check
                 if(!initalized)
@@ -193,7 +192,7 @@ int main()
 
             case 'i':
             case 'I':
-                printf("COMMAND: %c %d\n", c, n);
+                //printf("COMMAND: %c %d\n", c, n);
 
                 if(!initalized)
                 {
@@ -220,7 +219,7 @@ int main()
             //K, decreases the key of heap->H[index]
             case 'k':
             case 'K':
-                printf("COMMAND: %c\n", c);
+                //printf("COMMAND: %c\n", c);
 
                 if(!initalized)
                 {
