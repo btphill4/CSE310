@@ -91,11 +91,6 @@ class HEAP
     void heapSort(HEAP* a);
     ELEMENT getHeapMin(HEAP* a);
 
-    //node getter methods also may not need
-    int getParent(int i);
-    int getLeft(int i);
-    int getRight(int i);
-
 
 };
 

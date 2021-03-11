@@ -90,6 +90,8 @@ int nextCommand(int *n, int *f)
             break;
         }
         
+        printf("Warning in nextCommand: invalid input\n");
+        break;
         
     }//end while()
     return c;

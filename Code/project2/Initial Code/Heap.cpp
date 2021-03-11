@@ -70,14 +70,18 @@ void HEAP::heapPrint(HEAP* a)
 }
 //==================END Project 1=========================//
 
-// Project 2 Methods //
+//=================Project 2 Methods=================//
+
 //to swap the KEYS in the array
+//integer Swap
 void swap(int *x, int *y) 
 { 
 	int temp = *x; 
 	*x = *y; 
 	*y = temp; 
 } 
+
+//elementSwap 
 void eSwap(ElementT *x, ElementT *y) 
 { 
 	ElementT temp = *x; 
@@ -85,18 +89,17 @@ void eSwap(ElementT *x, ElementT *y)
 	*y = temp; 
 } 
 
-//return the parent node value 
-int HEAP::getParent(int i)
+
+//Return Node value (NOT IN HEAP.H)
+int gParent(int i)
 {
 	return i/2;
 }
-//returns the left node value 
-int HEAP::getLeft(int i)
+int gLeft(int i)
 {
 	return 2*i;
 }
-//returns the right node value 
-int HEAP::getRight(int i)
+int gRight(int i)
 {
 	return ((2 * i) + 1);
 }
@@ -108,7 +111,7 @@ int HEAP::buildMinHeap(HEAP*  a)
 	a->getSize() == a->getCapacity();
 	for(int i = (a->getCapacity()); i <= 1; i++)
 	{
-		//minHeapify(a, i);
+		//minHeapify(a, i);		//minHeapBroken
 		counter++;
 		a->heapifyCount++;
 	} 
@@ -117,16 +120,12 @@ int HEAP::buildMinHeap(HEAP*  a)
 //builds minHeap 
 void minHeapify(HEAP * a, int i)
 {
-	int * l;
-	//l = a->H[i];
-	int left;
-	//left = a->H[i];
-	l = &left;
-	int right = a->getRight(i);
+	int left = gLeft(i);
+	int right = gRight(i);
 	int root;
 
-	//THE LOGIC IS HERE BUT THE GETLEFT AND RIGHT ARE WRONG//
-	/*if(left >= a->getSize() && a->H[left] < a->H[i])
+	//Logic should be right but the pointer issue
+	if(left >= a->getSize() && a->H[left]->key < a->H[i]->key)
 	{
 		root = left;
 	}
@@ -143,11 +142,11 @@ void minHeapify(HEAP * a, int i)
 	{
 		swap(a->H[i], a->H[root]);
 		minHeapify(a, root);
-	}*/
+	}
 	
 }
 
-//sorts the heap(min)
+//sorts the heap(min) (I think uneeded but ye)
 void HEAP::heapSort(HEAP* a)
 {
 	buildMinHeap(a);
@@ -159,7 +158,7 @@ void HEAP::heapSort(HEAP* a)
 	}
 }
 
-//returns the root element(doesn't remove)
+//returns the root element(doesn't remove element)
 ELEMENT HEAP::getHeapMin(HEAP * a)
 {
 	return a->H[1];
@@ -184,7 +183,6 @@ void HEAP::insert(HEAP* a, int obj)
 	//a->H[i].key = obj; 
 	ELEMENT *keyPtr = new ELEMENT();
 	keyPtr->key = obj;
-	//std::cout << w << "\n";                   //Testing purposes
 	a->H[i] = *keyPtr;
 
 	/*// Fix the min heap property if it is violated 
@@ -196,16 +194,20 @@ void HEAP::insert(HEAP* a, int obj)
     
 
    //added element, size++ ADD TO MAIN MAYBE
-   
+   /*
+	Xue Slides
+	heap-size[a]++; //a->size++;
+	i = heap-size[a]; //i = a->size;
+	a[i] = (negative inifity);
+	heap-decrease-key(A,i,key(OBJ))
+   */
 }
 
 //deletes the minimum element from the 
 //heap pointed to by heapand prints them
 int extractMin(HEAP* a)
 {	
-	//print deleted key
-
-	//cout << "Deleted key: " << a->H[1]->key << endl;
+	
 
 	//will be in main
 	if(a->getSize() < 1)
@@ -213,8 +215,14 @@ int extractMin(HEAP* a)
 		cout << "heap is empty\n";
 	}
 
+	//print deleted key
+	ELEMENT *keyPtr = new ELEMENT();
+	keyPtr->key = a->H[1]->key;
+	a->H[1]->key = *keyPtr;
+	cout << "Deleted key: " << keyPtr << endl;
+
 	int min;
-	//int min = a->H[1]->key;
+	int min = a->H[1]->keyPtr;
 	a->H[1] = a->H[a->size];
 	a->size = a->size - 1;
 	//minHeapify(a,1);
@@ -247,17 +255,32 @@ int extractMin(HEAP* a)
 void decreaseKey(HEAP* a, int index, int value)
 { 	//main call: mainHeap->decreaseKey(mainHeap, n, f);
 	
-	/*if (value > a->H[index]->key)
+
+	if (value > a->H[index-1]->key)
 	{
 		cout << "key is larger than current key";
 	}
 	a->H[i]->key = k;
 	while (i > 1 && a->H[a->getParent(i)] > a->H[i])
 	{
-		swap(a->H[i], a->H[a->getParent(i)]);
+		eSwap(a->H[i], a->H[a->getParent(i)]);
 		i = a->getParent(i);
-	}*/
+	}
 	
+	/*
+	Xue Slides
+	if key < a[i]
+	{
+		cout << "Error";
+	}
+	else
+	a[i] = key;
+		while(i > 1 and a[getParent(i) < a[i]])
+		{
+			eSwap(a[i], a[getParent(i)]);
+			i = getParent(i);
+		}
+	 */
 }
 
 
