@@ -90,7 +90,9 @@ int main()
                     //std::cout << w << "\n";                   //Testing purposes
                     mainHeap->H[i] = *keyPtr;
                     //std::cout << mainHeap->H[i].key << "\n";  //Testing purposes
-
+                    
+                    //increments the heapSize with each added element
+                    mainHeap->size++;
                 }
                 //getline(input.open, temp2);
                 break;
@@ -157,8 +159,103 @@ int main()
                     printf("Error: cannot open file for writing\n");
                     break;
                 }
-                
+            //end project 1 stuff
+            
+//========================================================================//
 
+            //PROJECT 2 STUFF
+            //D, deletes the minimum element and writes it to terminal
+            case 'd':
+            case 'D':
+                printf("COMMAND: %c\n", c);
+
+                //initalize check
+                if(!initalized)
+                {
+                    printf("Error: heap is NULL or empty\n");
+                    break;
+                }
+                //heap is null or size is 0
+                if (mainHeap->size == 0)
+                {
+                    printf("Error: heap is NULL or empty\n");
+                    break;
+                }
+                //else extractMin(mainHEap)
+                else
+                {
+                    //wrong
+                    //HEAP::extractMin(mainHeap);
+                    break;
+                }
+                //code
+                break;    
+
+            case 'i':
+            case 'I':
+                printf("COMMAND: %c %d\n", c, n);
+
+                if(!initalized)
+                {
+                    printf("Error: heap is NULL or full\n");
+                    break;
+                }
+                //heap is null or size is 0
+                if (mainHeap->size == mainHeap -> capacity)
+                {
+                    printf("Error: heap is NULL or full\n");
+                    break;
+                }
+                //else add element
+                else
+                {
+                    //wrong
+                    //mainHeap->insert()
+                    break;
+                }
+                //code
+                break;  
+            
+            //unposted 4
+            //K, decreases the key of heap->H[index]
+            case 'k':
+            case 'K':
+                printf("COMMAND: %c\n", c);
+
+                if(!initalized)
+                {
+                    printf("Error: invalid call to DecreaseKey\n");
+                    break;
+                }
+                //heap is null or size is 0
+                if (mainHeap->size == mainHeap -> capacity)
+                {
+                    printf("Error: invalid call to DecreaseKey\n");
+                    break;
+                }
+                //if index is not within interval [1, heap->size]
+                if(n != mainHeap->size)
+                {
+                    printf("Error: invalid call to DecreaseKey\n");
+                    break;
+                }
+                //if n >= heap->H[index]->key
+                if(n >= mainHeap->H->key)
+                {
+                    printf("Error: invalid call to DecreaseKey\n");
+                    break;
+                }
+                else
+                {
+                    //probably wrong
+                    //mainHeap->decreaseKey(mainHeap, mainHeap->size, n );
+                    break;
+                }
+                
+                //code
+
+                break;  
+            
             default: 
                 cout << "Please Enter correct Input" << endl;
                 break;

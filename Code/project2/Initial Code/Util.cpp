@@ -60,6 +60,31 @@ int nextCommand(int *n, int *f)
             break;
         }
         
+        //end project1 stuff
+        //=======================================================//
+
+        //PROJECT2 STUFF
+        //D input, deletes minimum element and writes out deleted element
+        if (c == 'D' || c == 'd')
+        {
+            scanf("%d", n);
+            break;
+        }
+
+        //I input, insert key to ELEMENT[]
+        if (c == 'I' || c == 'i')
+        {
+            scanf("%d", n);
+            break;
+        }
+
+        //K input, decrease key
+        if (c == 'K' || c == 'k')
+        {
+            break;
+        }
+        
+        
     }//end while()
     return c;
 }// end int nextCommand()

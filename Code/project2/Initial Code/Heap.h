@@ -13,6 +13,7 @@ class ELEMENT
 {
     public:
     int key;
+
 };
 
 //pointer to element class to be used with an array
@@ -46,20 +47,6 @@ class HEAP
     HEAP* initialize(int n);
     void heapPrint(HEAP* a);
 
-
-
-    //Methods For project 2
-    //void buildHeap();
-    //writeHeap(heap)
-    void insert(HEAP* a, ElementT obj);
-    void extractMin(HEAP* a);
-    void decreaseKey(HEAP* a, int index, int value);
-    void minHeapify(HEAP* a, int index);
-    int getLeft(int i);
-    int getRight(int i);
-
-
-
     //getter methods
     int getCapacity()
     {
@@ -90,6 +77,26 @@ class HEAP
     {
         size = s;
     }
+
+//====================================================//
+
+
+    //Methods For project 2
+    void buildMinHeap(HEAP* a);
+    void heapSort(HEAP* a);
+    //writeHeap(heap)
+    void insert(HEAP* a, ElementT key);
+    void extractMin(HEAP* a);
+    void decreaseKey(HEAP* a, int i, int key);
+    void minHeapify(HEAP* a, int i);
+
+    //node getter methods
+    int getParent(int i);
+    int getLeft(int i);
+    int getRight(int i);
+
+    ELEMENT getHeapMin(HEAP* a);
+    int keyAsInt(ElementT key);
 
 };
 
