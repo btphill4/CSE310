@@ -37,7 +37,6 @@ int main()
     //command line input loop
     while(1)
     {
-        int heapifyCounter = 0;
         c = nextCommand(&n, &f);
         switch (c) 
         {
@@ -95,8 +94,8 @@ int main()
                     mainHeap->H[i] = *keyPtr;
                     //std::cout << mainHeap->H[i].key << "\n";  //Testing purposes
                     
-                    //Call to build heap
-                    mainHeap->buildMinHeap(mainHeap);
+                    //Call to build heap THIS IS BROKEN THIS SORTS THE HEAP
+                    mainHeap->buildMinHeap(mainHeap);   
 
                     //increments the heapSize with each added element
                     mainHeap->size++;
@@ -105,8 +104,9 @@ int main()
                 //if f = 1, print number of Heapify Calls
                 if(f == 1)
                 {
-                    cout << "Number of Heapify calls: " << heapifyCounter << endl;
+                    cout << "Number of Heapify calls: " << mainHeap->heapifyCount << endl;
                     break;
+                    //calls to r
                 }
                 break;
 
@@ -199,7 +199,7 @@ int main()
                 else
                 {
                     //wrong i think
-                    //mainHeap->extractMin(mainHeap);
+                    mainHeap->extractMin(mainHeap);
                     break;
                 }
                 //code

@@ -1,3 +1,23 @@
-Number of Heapify calls: 20
 capacity=20, size=7
-70, 60, 50, 40, 30, 20, 10
+20, 30, 20, 40, 30, 20, 10
+Deleted key: 20
+capacity=20, size=6
+20, 30, 20, 40, 30, 20
+Deleted key: 20
+capacity=20, size=5
+20, 30, 20, 40, 30
+Deleted key: 20
+capacity=20, size=4
+20, 30, 20, 40
+Deleted key: 20
+capacity=20, size=3
+20, 30, 20
+Deleted key: 20
+capacity=20, size=2
+20, 30
+Deleted key: 20
+capacity=20, size=1
+20
+Deleted key: 20
+capacity=20, size=0
+Error: heap is NULL or empty

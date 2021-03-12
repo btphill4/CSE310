@@ -108,7 +108,6 @@ int gRight(int i)
 //builds a minHeap
 void HEAP::buildMinHeap(HEAP* a)//buildHeap(pointer to array heap?)
 {
-	int counter = 0;
 	//a->getSize() == a->getCapacity();
 	/*for(int i = (a->getCapacity()); i <= 1; i++)
 	{
@@ -123,14 +122,13 @@ void HEAP::buildMinHeap(HEAP* a)//buildHeap(pointer to array heap?)
 		//a->H[i].key;
 		
 
-		//minHeapify(a, i);
+		a->minHeapify(a, i);	//this is the call to minheapify recursively
 		a->heapifyCount++;
-		counter++;
 	}
 	
 }
 //builds minHeap 
-void minHeapify(HEAP * a, int i)
+void HEAP::minHeapify(HEAP * a, int i)
 {
 	//ElementT arr = a->getH();
 	//int l = 2*i + 1;
@@ -207,12 +205,12 @@ void HEAP::insert(HEAP* a, int obj)
 	keyPtr->key = obj;
 	a->H[i] = *keyPtr;
 
-	/*// Fix the min heap property if it is violated 
-	while (i != 0 && a->H[getParent(i)]->key > a->H[i]->key) 
+	// Fix the min heap property if it is violated 
+	while (i != 0 && a->H[gParent(i)].key > a->H[i].key) 
 	{ 
-	eSwap(a->H[i], a->H[getParent(i)]); 
-	i = getParent(i); 
-	} */
+	swap(a->H[i].key, a->H[gParent(i)].key); 
+	i = gParent(i); 
+	} 
     
 
    //added element, size++ ADD TO MAIN MAYBE
@@ -227,10 +225,8 @@ void HEAP::insert(HEAP* a, int obj)
 
 //deletes the minimum element from the 
 //heap pointed to by heapand prints them
-int extractMin(HEAP* a)
+void HEAP::extractMin(HEAP* a)
 {	
-	
-
 	//will be in main
 	if(a->getSize() < 1)
 	{
@@ -244,11 +240,10 @@ int extractMin(HEAP* a)
 	cout << "Deleted key: " << a->H[1].key << endl;
 
 	int min;
-	min = a->H[1].key;
-	a->H[1] = a->H[a->size];
+	min = a->H[0].key;
+	a->H[0] = a->H[a->size];
 	a->size = a->size - 1;
-	minHeapify(a,1);
-	return min;
+	minHeapify(a,0);
 
     /* 
     if (heap_size <= 0) 
@@ -269,25 +264,25 @@ int extractMin(HEAP* a)
     */
 
    //removes the element, size--
-   a->size--;
+  // a->size--;
 }
 
 //right method but pointers are rough
 //decreases the key of heap->H[index] to value
-void decreaseKey(HEAP* a, int index, int value)
+void decreaseKey(HEAP* a, int i, int value)
 { 	//main call: mainHeap->decreaseKey(mainHeap, n, f);
 	
-	/*
-	if (value > a->H[index-1]->key)
+	
+	if (value > a->H[i-1].key)
 	{
 		cout << "key is larger than current key";
 	}
-	a->H[i]->key = k;
-	while (i > 1 && a->H[a->getParent(i)] > a->H[i])
+	//a->H[i]->key = k;
+	while (i > 1 && a->H[gParent(i)].key > a->H[i].key)
 	{
-		eSwap(a->H[i], a->H[a->getParent(i)]);
-		i = a->getParent(i);
-	}*/
+		swap(a->H[i].key, a->H[gParent(i)].key);
+		i = gParent(i);
+	}
 	
 	/*
 	Xue Slides
@@ -299,7 +294,7 @@ void decreaseKey(HEAP* a, int index, int value)
 	a[i] = key;
 		while(i > 1 and a[getParent(i) < a[i]])
 		{
-			eSwap(a[i], a[getParent(i)]);
+			swap(a[i], a[getParent(i)]);
 			i = getParent(i);
 		}
 	 */
