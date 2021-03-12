@@ -120,10 +120,10 @@ void HEAP::buildMinHeap(HEAP* a)//buildHeap(pointer to array heap?)
 	for(int i = a->size/2; i >= 1; i--)
 	{
 		//accessing elements
-		//heap->H[i]->key
+		//a->H[i].key;
 		
 
-		minHeapify(a, i);
+		//minHeapify(a, i);
 		a->heapifyCount++;
 		counter++;
 	}
@@ -133,16 +133,18 @@ void HEAP::buildMinHeap(HEAP* a)//buildHeap(pointer to array heap?)
 void minHeapify(HEAP * a, int i)
 {
 	//ElementT arr = a->getH();
+	//int l = 2*i + 1;
+	//int r = 2*i + 2;
 
 	int left = gLeft(i);
 	int right = gRight(i);
-	int root;
+	int root = i;
 
 	
 	ELEMENT *keyPtr = new ELEMENT();
 	keyPtr->key = a->H->key;
 	//Logic should be right but the pointer issue
-	if(left <= a->getSize() && a->H[left]->key <= a->H[i]->key)
+	if(left >= a->getSize() && a->H[left].key <= a->H[i].key)
 	{
 		a->H[root] = a->H[left];
 		//root = left;
@@ -153,14 +155,14 @@ void minHeapify(HEAP * a, int i)
 		//root = i;
 	}
 
-	if(right <= a->getSize() && a->H[right]->key <= a->H[i]->key)
+	if(right <= a->getSize() && a->H[right].key <= a->H[i].key)
 	{
 		a->H[root] = a->H[right];
 		//root = right;
 	}
 	if(root != i)
 	{
-		a->H->key = swap(a->H[root]->keyPtr, a->H[i]->keyPtr);
+		swap(a->H[root].key, a->H[i].key);
 		minHeapify(a, root);
 	}
 	
@@ -236,16 +238,16 @@ int extractMin(HEAP* a)
 	}
 
 	//print deleted key
-	ELEMENT *keyPtr = new ELEMENT();
-	keyPtr->key = a->H[1]->key;
-	a->H[1]->key = *keyPtr;
-	cout << "Deleted key: " << keyPtr << endl;
+	/*ELEMENT *keyPtr = new ELEMENT();
+	keyPtr->key = a->H[1]->key;*/
+	//a->H[1]->key = *key;
+	cout << "Deleted key: " << a->H[1].key << endl;
 
 	int min;
-	int min = a->H[1]->keyPtr;
+	min = a->H[1].key;
 	a->H[1] = a->H[a->size];
 	a->size = a->size - 1;
-	//minHeapify(a,1);
+	minHeapify(a,1);
 	return min;
 
     /* 
@@ -275,7 +277,7 @@ int extractMin(HEAP* a)
 void decreaseKey(HEAP* a, int index, int value)
 { 	//main call: mainHeap->decreaseKey(mainHeap, n, f);
 	
-
+	/*
 	if (value > a->H[index-1]->key)
 	{
 		cout << "key is larger than current key";
@@ -285,7 +287,7 @@ void decreaseKey(HEAP* a, int index, int value)
 	{
 		eSwap(a->H[i], a->H[a->getParent(i)]);
 		i = a->getParent(i);
-	}
+	}*/
 	
 	/*
 	Xue Slides

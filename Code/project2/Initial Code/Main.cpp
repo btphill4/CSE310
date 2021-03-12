@@ -96,7 +96,7 @@ int main()
                     //std::cout << mainHeap->H[i].key << "\n";  //Testing purposes
                     
                     //Call to build heap
-                    heapifyCounter = mainHeap->buildMinHeap(mainHeap);
+                    mainHeap->buildMinHeap(mainHeap);
 
                     //increments the heapSize with each added element
                     mainHeap->size++;
@@ -247,7 +247,7 @@ int main()
                     break;
                 }
                 //heap is null or size is 0
-                if (mainHeap->size == mainHeap -> capacity)
+                if (mainHeap->size == mainHeap->capacity)
                 {
                     printf("Error: invalid call to DecreaseKey\n");
                     break;
