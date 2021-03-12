@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
+#include <math.h>
 using namespace std;
 
 
@@ -105,42 +106,61 @@ int gRight(int i)
 }
 
 //builds a minHeap
-int HEAP::buildMinHeap(HEAP*  a)
+void HEAP::buildMinHeap(HEAP* a)//buildHeap(pointer to array heap?)
 {
 	int counter = 0;
-	a->getSize() == a->getCapacity();
-	for(int i = (a->getCapacity()); i <= 1; i++)
+	//a->getSize() == a->getCapacity();
+	/*for(int i = (a->getCapacity()); i <= 1; i++)
 	{
 		//minHeapify(a, i);		//minHeapBroken
 		counter++;
 		a->heapifyCount++;
-	} 
+	} */
+
+	for(int i = a->size/2; i >= 1; i--)
+	{
+		//accessing elements
+		//heap->H[i]->key
+		
+
+		minHeapify(a, i);
+		a->heapifyCount++;
+		counter++;
+	}
 	
 }
 //builds minHeap 
 void minHeapify(HEAP * a, int i)
 {
+	//ElementT arr = a->getH();
+
 	int left = gLeft(i);
 	int right = gRight(i);
 	int root;
 
+	
+	ELEMENT *keyPtr = new ELEMENT();
+	keyPtr->key = a->H->key;
 	//Logic should be right but the pointer issue
-	if(left >= a->getSize() && a->H[left]->key < a->H[i]->key)
+	if(left <= a->getSize() && a->H[left]->key <= a->H[i]->key)
 	{
-		root = left;
+		a->H[root] = a->H[left];
+		//root = left;
 	}
 	else
 	{
-		root = i;
+		a->H[root] = a->H[i];
+		//root = i;
 	}
 
-	if(right <= a->getSize() && a->H[right] < a->H[root])
+	if(right <= a->getSize() && a->H[right]->key <= a->H[i]->key)
 	{
-		root = right;
+		a->H[root] = a->H[right];
+		//root = right;
 	}
 	if(root != i)
 	{
-		swap(a->H[i], a->H[root]);
+		a->H->key = swap(a->H[root]->keyPtr, a->H[i]->keyPtr);
 		minHeapify(a, root);
 	}
 	

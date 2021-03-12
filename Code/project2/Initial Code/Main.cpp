@@ -205,6 +205,7 @@ int main()
                 //code
                 break;    
 
+            //unposted 1 and 2
             case 'i':
             case 'I':
                 //printf("COMMAND: %c %d\n", c, n);

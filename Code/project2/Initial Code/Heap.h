@@ -5,8 +5,8 @@
 */
 
 
-#ifndef heap_hpp
-#define heap_hpp
+#ifndef heap_h
+#define heap_h
 
 /** Element class that holds keys of type integer*/
 class ELEMENT
@@ -87,7 +87,7 @@ class HEAP
     void minHeapify(HEAP* a, int index);
 
     //Not required may not need
-    int buildMinHeap(HEAP* a);
+    void buildMinHeap(HEAP* a);
     void heapSort(HEAP* a);
     ELEMENT getHeapMin(HEAP* a);
 
