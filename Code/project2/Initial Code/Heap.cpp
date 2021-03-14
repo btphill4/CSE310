@@ -277,7 +277,7 @@ void decreaseKey(HEAP* a, int i, int value)
 	{
 		cout << "key is larger than current key";
 	}
-	//a->H[i]->key = k;
+	a->H[i].key = value;
 	while (i > 1 && a->H[gParent(i)].key > a->H[i].key)
 	{
 		swap(a->H[i].key, a->H[gParent(i)].key);

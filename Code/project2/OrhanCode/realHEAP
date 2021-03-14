@@ -1,0 +1,554 @@
+/*    /*heap.h*/
+
+#ifndef HEAP_H
+
+#define HEAP_H
+
+//define the structure Element
+
+struct Element
+
+{
+
+//contains a field named key,
+
+//which is of type int.
+
+int key;
+
+};
+
+//define the structure Heap  
+
+struct Heap
+
+{
+
+//capacity of heap of type int
+
+int capacity;
+
+//size of heap of type int
+
+int size;
+
+//an array of type ELEMENT
+
+struct Element *H;
+
+};
+
+//declare the member functions.
+
+Heap Initialize(int n);
+
+void buildHeap(Heap h, Element A[]);
+
+void insert(Heap *heap, int k);
+
+int deleteMin(Heap heap);
+
+void decreaseKey(Heap heap, Element element, int value);
+
+void printHeap(Heap heap);
+
+void swap(int *x, int *y);
+
+int parent(int i);
+
+int leftChild(int i);
+
+int rightChild(int i);
+
+void MinHeapify(Heap heap, int i);
+
+#endif
+
+heap.cpp:
+
+/*heap.cpp*/
+
+#include<iostream>
+
+#include<string>
+
+#include<climits>
+
+#include <fstream>
+
+#include "heap.h"
+
+using namespace std;
+
+//definition of the function Initialize()
+
+//returns an object of type HEAP with capacity n and size 0.
+
+Heap Initialize(int n)
+
+{
+
+struct Heap heap;
+
+heap.capacity = n;
+
+heap.size = 0;
+
+heap.H = (Element*)malloc(sizeof(Element)*heap.capacity);
+
+return heap;
+
+}
+
+//definition of the function buildHeap()
+
+//opies the elements in A into heap->H and uses the linear time
+
+void buildHeap(Heap h, Element A[])
+
+{
+
+for (int i = 0;i < h.size;i++)
+
+{
+
+h.H[i].key = A[i].key;
+
+}
+
+}
+
+//definition of the function insert()
+
+//which inserts an element with key equal to k into the min-heap heap.
+
+void insert(Heap *heap, int k)
+
+{
+
+if (heap->size == heap->capacity)
+
+{
+
+cout << "\nOverflow: Could not Insert\n";
+
+return;
+
+}
+
+//insert the new key at the end
+
+int i = heap->size;
+
+heap->H[i].key = k;
+
+heap->size++;
+
+// Check the min heap property if it is violated
+
+while (i != 0 && heap->H[parent(i)].key > heap->H[i].key)
+
+{
+
+swap(&heap->H[i].key, &heap->H[parent(i)].key);
+
+i = parent(i);
+
+}
+
+}
+
+//definition of the function deleteMin()
+
+//deletes the element with minimum key and returns it to the caller.
+
+int deleteMin(Heap heap)
+
+{
+
+if (heap.size <= 0)
+
+return INT_MAX;
+
+//if the size is 1 then return that element
+
+if (heap.size == 1)
+
+{
+
+heap.size--;
+
+return heap.H[0].key;
+
+}
+
+// Store the minimum value, and remove it from heap
+
+int min = heap.H[0].key;
+
+heap.H[0].key = heap.H[heap.size - 1].key;
+
+heap.size--;
+
+//call the MinHeapify() function.
+
+MinHeapify(heap, 0);
+
+return min;
+
+}
+
+//definition of the function deleteMin()
+
+//decreases the key field of element to valu
+
+void decreaseKey(Heap heap, Element element, int value)
+
+{
+
+int i;
+
+//find the index of that key in the heap
+
+for (int k = 0; k < heap.size;k++)
+
+{
+
+if (heap.H[k].key == element.key)
+
+{
+
+i = k;
+
+break;
+
+}
+
+}
+
+heap.H[i].key = value;
+
+while (i != 0 && heap.H[parent(i)].key > heap.H[i].key)
+
+{
+
+swap(&heap.H[i].key, &heap.H[parent(i)].key);
+
+i = parent(i);
+
+}
+
+}
+
+//definition of the function printHeap()
+
+// prints out the heap information, including capacity, size,
+
+//and the key fields of the elements
+
+void printHeap(Heap heap)
+
+{
+
+cout << "\nThe heap Information:\n";
+
+cout << "Capacity: " << heap.capacity <<endl;
+
+cout << "Size: " << heap.size << endl;
+
+cout << "heap elements:" << endl;
+
+cout << "Index\tElement" << endl;
+
+for (int i = 0;i<heap.size;i++) {
+
+cout << i<<"\t" <<heap.H[i].key << endl;
+
+}
+
+}
+
+//definition of the function swap()
+
+void swap(int *x, int *y)
+
+{
+
+int temp = *x;
+
+*x = *y;
+
+*y = temp;
+
+}
+
+//definition of the function parent()
+
+int parent(int i)
+
+{
+
+return (i - 1) / 2;
+
+}
+
+//definition of the function leftChild()
+
+// to get index of left child of node at index i
+
+int leftChild(int i)
+
+{
+
+return (2 * i + 1);
+
+}
+
+//definition of the function rightChild()
+
+// to get index of right child of node at index i
+
+int rightChild(int i)
+
+{
+
+return (2 * i + 2);
+
+}
+
+//definition of the function MinHeapify()
+
+//finds the Minimum heap.
+
+void MinHeapify(Heap heap, int i)
+
+{
+
+//call the function leftChild()
+
+int left = leftChild(i);
+
+//call the function rightChild()
+
+int right = rightChild(i);
+
+int smallest = i;
+
+if (left < heap.size && heap.H[left].key < heap.H[i].key)
+
+smallest = left;
+
+if (right < heap.size && heap.H[right].key < heap.H[smallest].key)
+
+smallest = right;
+
+if (smallest != i)
+
+{
+
+swap(&heap.H[i].key, &heap.H[smallest].key);
+
+//call the function () recursively.
+
+MinHeapify(heap, smallest);
+
+}
+
+}
+
+main.h:
+
+/*main.h*/
+#ifndef MAIN_H
+#define MAIN_H
+#include "heap.h"
+void readFromFile(Heap *heap);
+#endif
+
+main.cpp:
+
+/*main.cpp*/
+
+#include<iostream>
+
+#include<string>
+
+#include<climits>
+
+#include <fstream>
+
+#include "main.h"
+
+using namespace std;
+
+//definition of the function readFromFile(0
+
+//takes the heap object and open the text file
+
+// reads the values and inserts into the heap.
+
+void readFromFile(Heap *heap) {
+
+//declare the variables
+
+int size;
+
+int arr[100];
+
+//open the input text file
+
+ifstream myfile("HEAPinput.txt");
+
+//read the first value of the file
+
+myfile >> size;
+
+//read the value from and insert into the heap
+
+for (int i = 0;i < size;i++)
+
+{
+
+myfile >> arr[i];
+
+//call the function insert()
+
+insert(heap, arr[i]);
+
+}
+
+//close the input file.
+
+myfile.close();
+
+}
+
+// Driver program to test above functions
+
+int main()
+
+{
+
+//create an heap object
+
+struct Heap heap;
+
+//create an Element object
+
+struct Element e;
+
+//declare the variables
+
+char input;
+
+int n, key;
+
+int i, v;
+
+int delKey = 0;
+
+while (1) {
+
+//print the menu
+
+cout << "S: To stop the program." << endl;
+
+cout << "C n: Press C and enter the capacity of heap as n." << endl;
+
+cout << "R: To read from input file." << endl;
+
+cout << "W: To print the heap." << endl;
+
+cout << "I k: Press K and enter key value to insertin the heap." << endl;
+
+cout << "D: To delete the minimum element from the heap." << endl;
+
+cout << "K i v: Press K and enter the index and value to decrease." << endl;
+
+cout << "\nEnter your command: " << endl;
+
+cin >> input;
+
+switch (input) {
+
+//On reading C n, the program creates an empty heap with
+
+//capacity equal to n, and waits for the next command.
+
+case 'C':
+
+cin >> n;
+
+heap = Initialize(n);
+
+cout << "The heap is initialized with the capacity " << n << endl;
+
+break;
+
+//On reading R, the program reads in the array A from file HEAPinput.txt
+
+case 'R':readFromFile(&heap);
+
+cout << "The values read from the file and inserted into the heap." << endl;
+
+break;
+
+//On reading W, the program writes the current heap information to the screen,
+
+case 'W':printHeap(heap);
+
+break;
+
+//On reading I k, the program inserts an element with key
+
+//equal to k into the current heap
+
+case 'I': cin >> key;
+
+insert(&heap, key);
+
+cout << "The key is inserted in the heap." << endl;
+
+break;
+
+//On reading D, the program deletes the minimum element from the heap
+
+//and prints the key field of the deleted element on the screen.
+
+case 'D': delKey =deleteMin(heap);
+
+cout << "The minimum element "<< delKey<<" is deleted from the heap." << endl;
+
+break;
+
+//On reading K i v, the program decreases the key of element
+
+//with index i to the new value
+
+case 'K': cin >> i >> v;
+
+e.key = i;
+
+decreaseKey(heap, e, v);
+
+break;
+
+//On reading S, the program stops.
+
+case 'S':
+
+return 0;
+
+default: cout << "Enter correctly!!!!" << endl;
+
+}
+
+cout << endl;
+
+}
+
+return 0;
+
+}
+
+*/
