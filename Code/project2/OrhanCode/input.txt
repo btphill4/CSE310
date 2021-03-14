@@ -1,19 +1,2 @@
-C 20
-R 1
-P
-D 1
-P
-D 1
-P
-D 1
-P
-D 1
-P
-D 1
-P
-D 1
-P
-D 1
-P
-D 1
+W
 S

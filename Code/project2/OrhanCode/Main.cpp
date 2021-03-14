@@ -89,19 +89,20 @@ int main()
 
 	                mainHeap->H[i].key = w;
 	                //mainHeap->size++;
-                    mainHeap->heapifyCount++;
+                    //mainHeap->heapifyCount++;
                     //cout << endl << mainHeap->size;
+                    
                 }
                 mainHeap->buildMinHeap(mainHeap);
-                
-                //if f = 1, print number of Heapify Calls
-                if(f == 1)
-                {
-                    cout << "Number of Heapify calls: " << mainHeap->heapifyCount << endl;
-                    mainHeap->heapifyCount = 0;
+                if(f==1)
+                    {
+                        cout << "Number of Heapify calls: " << mainHeap->heapifyCount << endl;
+                        mainHeap->heapifyCount = 0;
+                    }
                     break;
-                    //calls to r
-                }
+                
+                
+                
                 break;
 
             //print command
@@ -134,12 +135,12 @@ int main()
             //W: input, writes the array and commands to a file
             case 'w':
             case 'W':  
-                printf("COMMAND: %c\n", c);
+                //printf("COMMAND: %c\n", c);
 
                 //initalize check
                 if(!initalized)
                 {
-                     printf("Error: cannot write\n");
+                    printf("Error: cannot write\n");
 
                     break;
                 }
@@ -148,23 +149,28 @@ int main()
                 //jfile >> temp2;
                 if(jfile.fail())
                 {
-                     printf("Error: cannot open file for writing\n");
+                     
+                     printf("Error: cannot write\n");
+                     //printf("Error: cannot open file for writing\n");
                      break;
                 }
 
                 //size check
                 if(mainHeap->size == 0)
                 {
-                    printf("Error: heap is NULL\n");
+                    //printf("Error: heap is NULL\n");
+                    printf("Error: cannot write\n");
                     break;
                 }
 
                 //else write
                 else
                 {
-                    printf("Error: cannot open file for writing\n");
+                    //printf("Error: cannot open file for writing\n");.
+                    printf("Error: cannot write\n");
                     break;
                 }
+                break;
             //end project 1 stuff
 
 //========================================================================//
@@ -191,10 +197,16 @@ int main()
                 //else does extractMin(mainHeap)
                 else
                 {
+                    
                     deletedKey = mainHeap->extractMin(mainHeap);
                     cout << "Deleted key: " << deletedKey << endl;
                     if(f==1)
                     {
+                        if(mainHeap->heapifyCount == 0)
+                        {
+                            cout << "Number of Heapify calls: " << 1 << endl;
+                        }
+                        else
                         cout << "Number of Heapify calls: " << mainHeap->heapifyCount << endl;
                         mainHeap->heapifyCount = 0;
                     }
@@ -285,6 +297,10 @@ int main()
             default: 
                 cout << "Please Enter correct Input" << endl;
                 break;
+        }
+        if(initalized == true)
+        {
+        mainHeap->heapifyCount = 0;
         }
     }//end while
 exit(0);

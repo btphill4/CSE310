@@ -13,7 +13,7 @@ HEAP::HEAP(int n)
 	size = 0; //correct I think
     //size = 12;	//wrong I think
 
-	heapifyCount = 0;
+	//heapifyCount = 0;
     //element pointer array
     ELEMENT* arr = new ELEMENT[n + 1];  //dynamically allocated
 
@@ -44,13 +44,11 @@ void HEAP::heapPrint(HEAP* a)
 			cout << "breaks in print" << endl;
             break;
         }*/
-
         //if we are at the end of the arr, don't print a comma
         if(i == a->getSize())
         {
             cout << arr[i].key << endl;
         }
-
         //print everything and put a commma after
         else
         {
@@ -80,7 +78,7 @@ void HEAP::buildMinHeap(HEAP* a)//buildHeap(pointer to array heap?)
 {
 	
 	//for(int i = a.size/2; i > 0; i--)
-	for(int i = a->size/2; i >= 0; i--)
+	for(int i = a->size/2; i > 0; i--)
 	{
 		a->minHeapify(a, i);	//this is the call to minheapify recursively
 	}
@@ -89,12 +87,8 @@ void HEAP::buildMinHeap(HEAP* a)//buildHeap(pointer to array heap?)
 }
 
 int parent(int i)
-
 {
-
-return (i) / 2;
-
-
+	return (i) / 2;
 }
 
 //definition of the function leftChild()
@@ -102,93 +96,70 @@ return (i) / 2;
 // to get index of left child of node at index i
 
 int leftChild(int i)
-
 {
-
-//return (2 * i + 1);
-return 2*i;
-
+	return 2*i;
 }
 
 //definition of the function rightChild()
-
 // to get index of right child of node at index i
 
 int rightChild(int i)
-
 {
-
-return 2 * i + 1;
-//return 2*i + 2;
+	return 2 * i + 1;
 }
 
 
 void HEAP::minHeapify(HEAP* heap, int i)
-
 {
-//call the function leftChild()
-int left = leftChild(i);
-//call the function rightChild()
-int right = rightChild(i);
-int smallest = i;
+	//call the function leftChild()
+	int left = leftChild(i);
+	//call the function rightChild()
+	int right = rightChild(i);
+	int smallest = i;
 
-if (left <= heap->size && heap->H[left].key < heap->H[i].key)
 
-smallest = left;
-
-if (right <= heap->size && heap->H[right].key < heap->H[smallest].key)
-
-smallest = right;
-
-if (smallest != i)
-
-{
-
-swap(&heap->H[i].key, &heap->H[smallest].key);
-
-//call the function () recursively.
-minHeapify(heap, smallest);
-
-}
-
-}
-
-int HEAP::extractMin(HEAP* a)
-
-{
-int deletedKey;
-if (a->size <= 0)
-{
-	//return INT_MAX;
-}
-//if the size is 1 then return that element
-
-	if (a->size == 1)
-
+	if (left <= heap->size && heap->H[left].key < heap->H[i].key)
 	{
-
-	a->size--;
-
-	deletedKey = a->H[1].key;
-
-	
-	return deletedKey;
-
+	smallest = left;
+	}
+	if (right <= heap->size && heap->H[right].key < heap->H[smallest].key)
+	{
+	smallest = right;
 	}
 
-// Store the minimum value, and remove it from heap
+	if (smallest != i)
+	{
+	swap(&heap->H[i].key, &heap->H[smallest].key);
+	//call the function () recursively.
+	minHeapify(heap, smallest);
+	}
+	heap->heapifyCount++;
+	}
 
+int HEAP::extractMin(HEAP* a)
+{
+	int deletedKey;
+	if (a->size <= 0)
+	{
+		//return INT_MAX;
+	}
+
+	//if the size is 1 then return that element
+	if (a->size == 1)
+	{
+	a->size--;
+	deletedKey = a->H[1].key;
+	return deletedKey;
+	}
+
+	// Store the minimum value, and remove it from heap
 	int min = a->H[1].key;
 	a->size--;
 	a->H[1].key = a->H[a->size + 1].key;
 
-	
-
-//call the MinHeapify() function.
-
-minHeapify(a, 1);
-
-return min;
+	//call the MinHeapify() function.
+	minHeapify(a, 1);
+	return min;
 
 }
 
@@ -202,26 +173,19 @@ void HEAP::insert(HEAP *heap, int k)
 		return;
 	}
 
-//insert the new key at the end
+	//insert the new key at the end
 
 	int i = heap->size;
-
 	heap->size++;
-
 	heap->H[i + 1].key = k;
-
-	
 
 	buildMinHeap(heap);
 
-// Check the min heap property if it is violated
-
+	// Check the min heap property if it is violated
 	while (i != 1 && heap->H[parent(i)].key > heap->H[i].key)
 	{
-
 	swap(&heap->H[i].key, &heap->H[parent(i)].key);
 	i = parent(i);
-
 	}
 
 }
