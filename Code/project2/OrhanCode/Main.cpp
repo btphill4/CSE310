@@ -82,11 +82,9 @@ int main()
 
                 //write to the heap
                 mainHeap->setSize(n);
-                for(int i = 1; i <= n; i++) //changed n from mainHeap->getSize()
+                for(int i = 1; i <= n; i++) 
                 {
                     input >> w;
-                    //mainHeap->insert(mainHeap, w);
-
 	                mainHeap->H[i].key = w;
 	                //mainHeap->size++;
                     //mainHeap->heapifyCount++;
@@ -95,13 +93,11 @@ int main()
                 }
                 mainHeap->buildMinHeap(mainHeap);
                 if(f==1)
-                    {
-                        cout << "Number of Heapify calls: " << mainHeap->heapifyCount << endl;
-                        mainHeap->heapifyCount = 0;
-                    }
-                    break;
-                
-                
+                {
+                    cout << "Number of Heapify calls: " << mainHeap->heapifyCount << endl;
+                    mainHeap->heapifyCount = 0;
+                }
+                break;
                 
                 break;
 
@@ -218,7 +214,7 @@ int main()
                 
                 break;    
 
-            //unposted 1 and 2
+            //Inserts the element into the heap
             case 'i':
             case 'I':
                 //printf("COMMAND: %c %d\n", c, n);
@@ -241,14 +237,12 @@ int main()
                 //to the heap pointed to by heap
                 else
                 {
-                    //wrong
                     mainHeap->insert(mainHeap, n);
                     break;
                 }
                 //code
                 break;  
             
-            //unposted 4
             //K, decreases the key of heap->H[index]
             case 'k':
             case 'K':
@@ -257,21 +251,18 @@ int main()
                 if(!initalized)
                 {
                     printf("Error: invalid call to DecreaseKey\n");
-                    //printf("Error: its his one\n");
                     break;
                 }
                 //heap is null or size is 0
                 if (mainHeap->size == mainHeap->capacity)
                 {
                     printf("Error: invalid call to DecreaseKey\n");
-                    //printf("Error: its his two\n");
                     break;
                 }
                 //if index is not within interval [1, heap->size]
                 if(n <= 0 && n <= mainHeap->size)
                 {
                     printf("Error: invalid call to DecreaseKey\n");
-                    //printf("Error: its his three\n");
                     break;
                 }
                 //if n >= heap->H[index]->key
@@ -282,22 +273,18 @@ int main()
                 }
                 else
                 {
-                    //int n = index, int f = value
-
-                    //probably wrong
                     //decrese the key of mainHeap->H[index(n)] 
                     mainHeap->decreaseKey(mainHeap, n, f);
                     break;
                 }
                 
-                //code
-
                 break;  
             
             default: 
                 cout << "Please Enter correct Input" << endl;
                 break;
         }
+        //segfault fix
         if(initalized == true)
         {
         mainHeap->heapifyCount = 0;

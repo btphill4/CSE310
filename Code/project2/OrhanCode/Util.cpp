@@ -60,13 +60,6 @@ int nextCommand(int *n, int *f)
             break;
         }
 
-        //I input, insert key to ELEMENT[]
-        if (c == 'I' || c == 'i')
-        {
-            scanf("%d", n);
-            break;
-        }
-
         //K input, decrease key
         if (c == 'K' || c == 'k')
         {
@@ -75,6 +68,13 @@ int nextCommand(int *n, int *f)
 
             //scan for value
             scanf("%d", f);
+            break;
+        }
+        
+        //I input, insert key to ELEMENT[]
+        if (c == 'I' || c == 'i')
+        {
+            scanf("%d", n);
             break;
         }
         
