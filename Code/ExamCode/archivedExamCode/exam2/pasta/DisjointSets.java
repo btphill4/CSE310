@@ -6,15 +6,21 @@ public class DisjointSets {
     public static void main(String[] args) {
         A = new int[] {0,
                 // input array contents here, this is an example from HW_3: Q3
-                -3, 1, 1, 3, 1, 5, 5, 7, -3, 9, 9, 11, 9, 13, 13, 15
+                -3, 1, 1, 3, 1, 5, 5, 7, 1, 9, 9, 11, -2, 13, 13, 15
         };
 
         // input commands here
-        findSet(7);
-        findSet(15);
-        union(16, 4);
+        printSet();
+        System.out.println();
+        findSet(8);
+        findSet(10);
+        //union(8, 16);
+        //union(10, 14);
+        //findSet(8);
+        //findset(10);
 
         printSet();
+        
     }
 
     public static void makeSet(int x) {

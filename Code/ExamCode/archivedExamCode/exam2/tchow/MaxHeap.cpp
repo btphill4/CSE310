@@ -204,6 +204,10 @@ int main()
      * h.extractMin();
      * h.increaseKey(3, 28);
     */
+
+    //h.insertKey(4);
+    //h.extractMax();
+    //h.increaseKey(3, 28);
     //************************************************************************
     return 0;
 }

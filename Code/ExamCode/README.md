@@ -1,7 +1,14 @@
+## Exam3 Algorithms
+- Pasta: DisjointSets, Heaps (Driver), MaxHeap/MinHeap with heapify calls, LCS, Red & Black Trees (Java)
+- LCS Resources: 
+  - http://lcs-demo.sourceforge.net/
+  - https://www.cs.usfca.edu/~galles/visualization/DPLCS.html
+
 ## Exam2 Algorithms
 - Kawhilites: FindSet, Link, Union, MaxHeap/MinHeap (C++)
 - T.Chow: MaxHeap/MinHeap with heapify calls (C++)
 - Pasta: DisjointSets, Heaps (Driver), MaxHeap/MinHeap with heapify calls (Java)
+- The_Babu: Web app of BFS, DFS, Topo (html)
 
 ## Exam1 Algorithms
 - InsertionSort, MergeSort, and QuickSort (C++ & Python)

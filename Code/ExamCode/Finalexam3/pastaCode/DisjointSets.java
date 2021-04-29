@@ -1,10 +1,14 @@
 
 public class DisjointSets {
-
     static int[] A;
+    static boolean findWithPathCompression;
 
     public static void main(String[] args) {
-        A = new int[] {0,
+
+        // change to false if you want to find without path compression
+        findWithPathCompression = true;
+
+        A = new int[] { 0,
                 // input array contents here, this is an example from HW_3: Q3
                 -3, 1, 1, 3, 1, 5, 5, 7, -3, 9, 9, 11, 9, 13, 13, 15
         };
@@ -41,16 +45,18 @@ public class DisjointSets {
             return x;
         } else {
             // find with path compression
-            A[x] = findSet(A[x]);
-            return A[x];
+            if (findWithPathCompression) {
+                A[x] = findSet(A[x]);
+                return A[x];
+            }
 
             // find without path compression
-            // return findSet(A[x]);
+            return findSet(A[x]);
         }
     }
 
     public static void printSet() {
-        System.out.print("i:\t\t");
+        System.out.print("i:\t");
         for (int x = 1; x < A.length; x++) {
             System.out.print("\t" + x);
         }
@@ -58,7 +64,7 @@ public class DisjointSets {
         for (int x = 1; x < A.length; x++) {
             System.out.print("\t" + A[x]);
         }
-        System.out.print("\n");
+        System.out.println();
     }
 
 }

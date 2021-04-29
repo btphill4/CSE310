@@ -38,14 +38,14 @@
 		
 		//**MODIFY THIS**
 		var THEGRAPH = [
-					{ id: "A", adj: ["C"] },
-					{ id: "B", adj: ["A", "D"] },
-					{ id: "C", adj: ["B"] },
-					{ id: "D", adj: ["C"] },
-					{ id: "E", adj: ["B", "G"] },
-					{ id: "F", adj: ["C", "E", "H"] },
+					{ id: "A", adj: ["B", "D"] },
+					{ id: "B", adj: ["C", "D"] },
+					{ id: "C", adj: [] },
+					{ id: "D", adj: ["B", "E"] },
+					{ id: "E", adj: ["A", "C"] },
+					{ id: "F", adj: ["C", "G"] },
 					{ id: "G", adj: ["H"] },
-					{ id: "H", adj: ["E"] }
+					{ id: "H", adj: ["E", "F"] }
 				];
 		
 		//UNDIRECTED ADJ LIST NOTICE HOW ITS STILL ALPHABETICAL BUT IT JUST POINTS TWICE
@@ -241,8 +241,8 @@
 				}
 		
 		//RUN **MODIFY THIS** Uncomment appropiate function
-		dfs();
+		//dfs();
 		//bfs("A");
-		//topological_sort();
+		topological_sort();
 	</script>
 </html>
