@@ -19,9 +19,9 @@ public class Red_Black_Tree {
             1. make sure all the arrays are of the same size!
             2. insert all the nodes and its corresponding color and letter in order 
         */
-        char[] idArr = new char[] { 'f', 'c', 'l', 'a', 'e', 'h', 'n', 'b', 'd', 'g', 'j', 'm', 'o', 'i', 'k' };
-        int[] arr = new int[] { 40, 20, 100, 10, 30, 60, 120, 15, 25, 50, 80, 110, 130, 70, 90 };
-        char[] colors = new char[] { 'B', 'B', 'R', 'B', 'B', 'B', 'B', 'R', 'R', 'B', 'B', 'B', 'B', 'R', 'R' };
+        char[] idArr = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'};
+        int[] arr = new int[] { 40, 20, 100, 10, 30, 60, 120, 15, 50, 80, 110, 130, 70, 90 };
+        char[] colors = new char[] { 'B', 'B', 'R', 'B', 'B', 'B', 'B', 'R', 'B', 'B', 'B', 'B', 'R', 'R'};
 
         RedBlackTree tree = new RedBlackTree(idArr, arr, colors);
         System.out.println();
@@ -38,13 +38,19 @@ public class Red_Black_Tree {
 
         // write commands here
 
-        tree.delete(40);
-         tree.printNode('g');
-        // tree.printNode('l');
-        // tree.printNode('j');
-        // tree.printNode('h');
+        tree.printTree();
+        //tree.delete(30);
+        //tree.printNode('g');
+        //tree.printNode('l');
+        //tree.printNode('j');
+        //tree.printNode('h');
+        tree.insert('p', 12);
+        tree.successor('p');
+        tree.printNode('p');
 
-        //tree.printTree();
+        tree.printTree();
+
+        tree.printAllNodes();
     }
 }
 
